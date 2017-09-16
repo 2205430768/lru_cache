@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "lru_cache.cc"
+#include "lru_cache.h"
 
 template class LRUCache<std::string, std::string>;
 
@@ -20,9 +20,10 @@ int main() {
         cache.print();
     }
 
-    for (int i = 0; i < 14; i++) {
+    for (int i = 0; i < 24; i++) {
         cout << "LOOKING UP: " << string(1, 'a' + i) << ": " <<
                 cache.retrieve(string(1, 'a' + i)).first << endl;
+        if (cache.retrieve(string(1, 'a' + i)).first.empty()) cout << "IT'S NOT THERE DUDE" << endl;
         cache.print();
     }
 
